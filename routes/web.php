@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VaccineCenterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,5 +19,6 @@ Route::get('/', function () {
 });
 
 Route::get('/authenticate-users', [UserController::class, 'index'])->name('home');
+Route::get('/vaccine-centers', [VaccineCenterController::class, 'index'])->name('home');
 
 

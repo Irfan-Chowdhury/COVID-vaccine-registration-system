@@ -12,7 +12,5 @@ class UserController extends Controller
         $authenticateUsers = User::get();
 
         return view('pages.authenticate_users',compact('authenticateUsers'));
-
-
     }
 }

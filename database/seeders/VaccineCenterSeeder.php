@@ -14,7 +14,7 @@ class VaccineCenterSeeder extends Seeder
     public function run(): void
     {
         VaccineCenter::factory()
-                    ->count(10)
+                    ->count(50)
                     ->create();
     }
 }
