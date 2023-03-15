@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable('registrations')) {
+        if (! Schema::hasTable('registrations')) {
             Schema::create('registrations', function (Blueprint $table) {
                 $table->id();
                 $table->unsignedBigInteger('user_id');
@@ -24,7 +24,6 @@ return new class extends Migration
 
                 $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
                 $table->foreign('vaccine_center_id')->references('id')->on('vaccine_centers')->onDelete('cascade');
-
             });
         }
 

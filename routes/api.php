@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\API\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,4 +21,3 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/authenticate-users', [UserController::class, 'index']);
 Route::get('/verified-users', [UserController::class, 'verifiedUsers']);
-

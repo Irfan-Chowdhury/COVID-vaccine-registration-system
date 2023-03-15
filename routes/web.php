@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VaccineCenterController;
 use App\Http\Controllers\VaccineRegistrationController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,11 +23,9 @@ Route::get('/', function () {
 // Route::get('/authenticate-users', [UserController::class, 'index']);
 Route::get('/vaccine-centers', [VaccineCenterController::class, 'index']);
 
-Route::group(['prefix' => 'vaccine-registration'], function (){
+Route::group(['prefix' => 'vaccine-registration'], function () {
     Route::get('/', [VaccineRegistrationController::class, 'userIdentificationPage'])->name('vaccine-registration.userIdentificationPage');
     Route::post('/user-identification-proess', [VaccineRegistrationController::class, 'userIdentificationProcess'])->name('vaccine-registration.userIdentificationProcess');
     Route::post('/user-information', [VaccineRegistrationController::class, 'userInformationPage'])->name('vaccine-registration.userInformationPage');
     Route::post('/confirmation', [VaccineRegistrationController::class, 'confirmationPage'])->name('vaccine-registration.confirmationPage');
 });
-
-

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\VaccineCenter;
-use Illuminate\Http\Request;
 
 class VaccineCenterController extends Controller
 {
@@ -11,6 +10,6 @@ class VaccineCenterController extends Controller
     {
         $vaccineCenters = VaccineCenter::get();
 
-        return view('pages.vaccine_centers',compact('vaccineCenters'));
+        return view('pages.vaccine_centers', compact('vaccineCenters'));
     }
 }

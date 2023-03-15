@@ -19,7 +19,7 @@ class VaccineCenterFactory extends Factory
         return [
             'center_name' => fake()->company,
             'address' => fake()->address,
-            'single_day_limit' => fake()->numberBetween($min = 50, $max = 200)
+            'single_day_limit' => fake()->numberBetween($min = 50, $max = 200),
         ];
     }
 }
