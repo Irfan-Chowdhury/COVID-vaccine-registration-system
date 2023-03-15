@@ -10,6 +10,8 @@
                 <form action="" method="post">
                     @csrf
 
+                    <h1>Test - {{ $otp }}</h1>
+
                     <div class="row">
                         <div class="col-md-12 mb-3">
                             <label for="exampleFormControlInput1" class="form-label">An OTP has been sent this <b>name@example.com</b> mail. Please check and fillup</label>

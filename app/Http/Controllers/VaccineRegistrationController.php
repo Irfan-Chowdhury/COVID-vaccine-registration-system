@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OTPMail;
 use App\Models\User;
 use App\Models\VaccineCenter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class VaccineRegistrationController extends Controller
@@ -64,6 +66,11 @@ class VaccineRegistrationController extends Controller
             return redirect(route('vaccine-registration.userInformationPage'), 307)->withErrors($validator)->withInput();
         }
 
-        return view('pages.vaccine_registration.confirmation_page');
+        $otp = rand(100000, 999999);
+
+        Mail::to($request->email)
+        ->send(new OTPMail($otp));
+
+        return view('pages.vaccine_registration.confirmation_page', compact('otp'));
     }
 }
