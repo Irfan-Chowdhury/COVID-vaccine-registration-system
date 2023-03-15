@@ -19,14 +19,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/authenticate-users', [UserController::class, 'index']);
+// Route::get('/authenticate-users', [UserController::class, 'index']);
 Route::get('/vaccine-centers', [VaccineCenterController::class, 'index']);
 
 Route::group(['prefix' => 'vaccine-registration'], function (){
     Route::get('/', [VaccineRegistrationController::class, 'userIdentificationPage'])->name('vaccine-registration.userIdentificationPage');
     Route::post('/user-identification-proess', [VaccineRegistrationController::class, 'userIdentificationProcess'])->name('vaccine-registration.userIdentificationProcess');
     Route::post('/user-information', [VaccineRegistrationController::class, 'userInformationPage'])->name('vaccine-registration.userInformationPage');
-    Route::post('/confirmation', [VaccineRegistrationController::class, 'confirmation'])->name('vaccine-registration.confirmation');
+    Route::post('/confirmation', [VaccineRegistrationController::class, 'confirmationPage'])->name('vaccine-registration.confirmationPage');
 });
 
 
