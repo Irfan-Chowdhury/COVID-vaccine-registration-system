@@ -14,21 +14,22 @@ return new class extends Migration
         if (! Schema::hasTable('registrations')) {
             Schema::create('registrations', function (Blueprint $table) {
                 $table->id();
-                $table->unsignedBigInteger('user_id');
                 $table->unsignedBigInteger('vaccine_center_id');
-                $table->string('email')->unique();
+                $table->string('nid')->unique();
+                $table->string('name');
+                $table->string('gender');
+                $table->string('date_of_birth');
+                $table->string('email');
                 $table->string('mobile');
-                $table->date('date');
+                $table->date('schedule_date');
                 $table->string('status');
                 $table->timestamps();
 
-                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
                 $table->foreign('vaccine_center_id')->references('id')->on('vaccine_centers')->onDelete('cascade');
             });
         }
 
         Schema::table('registrations', function (Blueprint $table) {
-            $table->dropForeign('registrations_user_id_foreign');
             $table->dropForeign('registrations_vaccine_center_id_foreign');
         });
     }

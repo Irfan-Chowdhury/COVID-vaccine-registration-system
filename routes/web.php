@@ -28,4 +28,5 @@ Route::group(['prefix' => 'vaccine-registration'], function () {
     Route::post('/user-identification-proess', [VaccineRegistrationController::class, 'userIdentificationProcess'])->name('vaccine-registration.userIdentificationProcess');
     Route::post('/user-information', [VaccineRegistrationController::class, 'userInformationPage'])->name('vaccine-registration.userInformationPage');
     Route::post('/confirmation', [VaccineRegistrationController::class, 'confirmationPage'])->name('vaccine-registration.confirmationPage');
+    Route::post('/confirmation-process', [VaccineRegistrationController::class, 'confirmationProcess'])->name('vaccine-registration.confirmationProcess');
 });

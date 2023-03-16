@@ -22,14 +22,13 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <div class="mt-4 form-check form-check-inline">
-                                <input class="form-check-input" name="gender" disabled @if($user->gender=='male') checked @endif type="radio" value="male">
-                                <label class="form-check-label" for="inlineRadio1">Male</label>
+                                <input class="form-check-input" onclick="return false;" name="gender" @if($user->gender=='male') checked @endif type="radio" value="male">
+                                <label class="form-check-label">Male</label>
                               </div>
                               <div class="form-check form-check-inline">
-                                <input class="form-check-input" disabled @if($user->gender=='female') checked @endif type="radio" value="female">
-                                <label class="form-check-label" name="gender" for="inlineRadio2">Female</label>
+                                <input class="form-check-input" onclick="return false;" name="gender"  @if($user->gender=='female') checked @endif type="radio" value="female">
+                                <label class="form-check-label">Female</label>
                               </div>
-
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Mobile</label>

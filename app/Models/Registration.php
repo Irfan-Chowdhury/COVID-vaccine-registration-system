@@ -10,11 +10,14 @@ class Registration extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
         'vaccine_center_id',
+        'nid',
+        'name',
+        'gender',
+        'date_of_birth',
         'email',
         'mobile',
-        'date',
+        'schedule_date',
         'status',
     ];
 }

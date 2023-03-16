@@ -8,18 +8,12 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Mail\Mailables\Address;
-class OTPMail extends Mailable
+
+class RegistrationSuccessfulMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
-    public function __construct(public $data)
-    {
-
-    }
+    public function __construct(public $name,public $confirmDate){}
 
     /**
      * Get the message envelope.
@@ -27,8 +21,7 @@ class OTPMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('fahim@gmail.com', 'Fahim'),
-            subject: 'OTP Mail',
+            subject: 'COVID Registration Successful',
         );
     }
 
@@ -38,9 +31,10 @@ class OTPMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.otp',
+            view: 'emails.reg_success',
             with: [
-                'otp' => $this->data,
+                'name' => $this->name,
+                'confirmDate' => $this->confirmDate,
             ],
         );
     }
