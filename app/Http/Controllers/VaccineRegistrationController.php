@@ -26,9 +26,9 @@ class VaccineRegistrationController extends Controller
             'nid' => 'required|numeric|unique:registrations',
             'date_of_birth' => 'required',
         ],
-        [
-            'nid.unique' => 'Already registered according to this NID',
-        ]);
+            [
+                'nid.unique' => 'Already registered according to this NID',
+            ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
@@ -43,6 +43,7 @@ class VaccineRegistrationController extends Controller
 
         if (! $isAuthenticUser->exists()) {
             $this->setErrorMessage('Your NID or Date of birth does not verify.');
+
             return redirect()->back();
         }
 
@@ -76,7 +77,7 @@ class VaccineRegistrationController extends Controller
         Mail::to($request->email)
         ->send(new OTPMail($otp));
 
-        return view('pages.vaccine_registration.confirmation_page', compact('otp','request'));
+        return view('pages.vaccine_registration.confirmation_page', compact('otp', 'request'));
     }
 
     public function confirmationProcess(Request $request)
@@ -91,6 +92,7 @@ class VaccineRegistrationController extends Controller
 
         if ($request->system_otp !== $request->user_otp) {
             $this->setErrorMessage('OTP does not match. Please input correct OTP.');
+
             return redirect(route('vaccine-registration.confirmationPage'), 307);
         }
 
@@ -98,15 +100,15 @@ class VaccineRegistrationController extends Controller
         $currentDate = new DateTime();
         // $nextDay = '+1 days';
         // $dateDifference = '+7 days';
-        $expectedDate  = $currentDate->modify('+7 days')->format('Y-m-d');
+        $expectedDate = $currentDate->modify('+7 days')->format('Y-m-d');
 
         $vaccineCenterDailyCapacity = VaccineCenter::find($request->vaccine_center_id)->single_day_limit;
 
-        $totalRegCountDateAndCenterWise = Registration::where('vaccine_center_id',$request->vaccine_center_id)
-                                        ->where('schedule_date',$expectedDate)
+        $totalRegCountDateAndCenterWise = Registration::where('vaccine_center_id', $request->vaccine_center_id)
+                                        ->where('schedule_date', $expectedDate)
                                         ->count();
 
-        if($totalRegCountDateAndCenterWise < $vaccineCenterDailyCapacity) {
+        if ($totalRegCountDateAndCenterWise < $vaccineCenterDailyCapacity) {
             $confirmDate = $this->expectedDateBaseOnDayName($currentDate);
         }
         // else if($totalRegCountDateAndCenterWise === $vaccineCenterDailyCapacity) {}
@@ -132,12 +134,12 @@ class VaccineRegistrationController extends Controller
     protected function expectedDateBaseOnDayName($currentDate)
     {
         $dayName = date('l', strtotime($currentDate->modify('+7 days')->format('Y-m-d')));
-        if($dayName === 'Friday'){
+        if ($dayName === 'Friday') {
             return $currentDate->modify('+9 days')->format('Y-m-d');
-        }
-        else if($dayName === 'Saturday'){
+        } elseif ($dayName === 'Saturday') {
             return $currentDate->modify('+8 days')->format('Y-m-d');
         }
+
         return $currentDate->modify('+7 days')->format('Y-m-d');
     }
 }

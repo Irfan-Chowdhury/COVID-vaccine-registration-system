@@ -8,12 +8,21 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class RegistrationSuccessfulMail extends Mailable
+class VaccineReminderEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public function __construct(public $name, public $confirmDate)
+    public $name;
+
+    public $scheduleDate;
+
+    public $centerName;
+
+    public function __construct($name, $scheduleDate, $centerName)
     {
+        $this->name = $name;
+        $this->scheduleDate = $scheduleDate;
+        $this->centerName = $centerName;
     }
 
     /**
@@ -22,7 +31,7 @@ class RegistrationSuccessfulMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'COVID Registration Successful',
+            subject: 'Vaccine Reminder Email',
         );
     }
 
@@ -32,10 +41,11 @@ class RegistrationSuccessfulMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.reg_success',
+            view: 'emails.reminder_email',
             with: [
                 'name' => $this->name,
-                'confirmDate' => $this->confirmDate,
+                'scheduleDate' => $this->scheduleDate,
+                'centerName' => $this->centerName,
             ],
         );
     }

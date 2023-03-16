@@ -12,6 +12,7 @@ class UserController extends Controller
     public function index()
     {
         $authenticateUsers = User::get();
+
         return view('pages.authenticate_users', compact('authenticateUsers'));
     }
 
@@ -29,10 +30,8 @@ class UserController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $registration = Registration::where('nid',$request->nid)->first();
+        $registration = Registration::with('vaccineCenter')->where('nid', $request->nid)->first() ?? 0;
 
         return view('pages.search', compact('registration'));
     }
-
-
 }

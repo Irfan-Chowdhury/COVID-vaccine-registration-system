@@ -35,5 +35,3 @@ Route::group(['prefix' => 'users'], function () {
     Route::get('/search', [UserController::class, 'searchPage'])->name('users.searchPage');
     Route::post('/search', [UserController::class, 'searchProcess'])->name('users.searchProcess');
 });
-
-

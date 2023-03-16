@@ -38,7 +38,7 @@
     <div class="mt-5 row">
         <div class="col-3"></div>
         <div class="col-6">
-            @if(isset($registration))
+            @if(isset($registration)  && $registration !== 0)
                 <table class="table">
                     <tr>
                         <th scope="col">Name</th>
@@ -62,8 +62,16 @@
                             @endif
                         </td>
                     </tr>
+                    <tr>
+                        <th scope="col">Date</th>
+                        <td>{{ $registration->schedule_date }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Center Name</th>
+                        <td>{{ $registration->vaccineCenter->center_name }}</td>
+                    </tr>
                 </table>
-            @else
+            @elseif(isset($registration) && $registration===0)
                 <div class="alert alert-danger" role="alert">
                     Not registered. <a href="{{ route('vaccine-registration.userIdentificationPage') }}">Click Here</a> to registration.
                 </div>

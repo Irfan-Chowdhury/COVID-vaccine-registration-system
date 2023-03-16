@@ -20,4 +20,9 @@ class Registration extends Model
         'schedule_date',
         'status',
     ];
+
+    public function vaccineCenter()
+    {
+        return $this->belongsTo(VaccineCenter::class);
+    }
 }
