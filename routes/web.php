@@ -20,7 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/authenticate-users', [UserController::class, 'index']);
 Route::get('/vaccine-centers', [VaccineCenterController::class, 'index']);
 
 Route::group(['prefix' => 'vaccine-registration'], function () {
@@ -30,3 +29,11 @@ Route::group(['prefix' => 'vaccine-registration'], function () {
     Route::post('/confirmation', [VaccineRegistrationController::class, 'confirmationPage'])->name('vaccine-registration.confirmationPage');
     Route::post('/confirmation-process', [VaccineRegistrationController::class, 'confirmationProcess'])->name('vaccine-registration.confirmationProcess');
 });
+
+Route::group(['prefix' => 'users'], function () {
+    Route::get('/authenticate', [UserController::class, 'index'])->name('users.index');
+    Route::get('/search', [UserController::class, 'searchPage'])->name('users.searchPage');
+    Route::post('/search', [UserController::class, 'searchProcess'])->name('users.searchProcess');
+});
+
+

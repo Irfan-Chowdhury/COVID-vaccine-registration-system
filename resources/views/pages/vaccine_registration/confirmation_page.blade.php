@@ -23,7 +23,7 @@
                     <input type="hidden" name="vaccine_center_id" value="{{ $request->vaccine_center_id }}">
                     <input type="hidden" name="system_otp" value="{{ $otp }}">
 
-                    <h1>Test - {{ $otp }}</h1>
+                    {{-- <h1>Test - {{ $otp }}</h1> --}}
 
                     <div class="row">
                         <div class="col-md-12 mb-3">
