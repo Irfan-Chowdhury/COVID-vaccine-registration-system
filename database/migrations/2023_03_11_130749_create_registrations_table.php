@@ -40,19 +40,7 @@ return new class extends Migration
     }
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
- // if (! Schema::hasTable('registrations')) {
+// if (! Schema::hasTable('registrations')) {
         //     Schema::create('registrations', function (Blueprint $table) {
         //         $table->id();
         //         $table->unsignedBigInteger('vaccine_center_id');
@@ -68,8 +56,8 @@ return new class extends Migration
 
         //         $table->foreign('vaccine_center_id')->references('id')->on('vaccine_centers')->onDelete('cascade');
         //     });
-        // }
+// }
 
-        // Schema::table('registrations', function (Blueprint $table) {
+// Schema::table('registrations', function (Blueprint $table) {
         //     $table->dropForeign('registrations_vaccine_center_id_foreign');
-        // });
+// });

@@ -61,10 +61,8 @@ class VaccineRegistrationController extends Controller
     }
 }
 
-
 // Fetch Verified Users Data
 // $response = Http::get(url('/').'/api/authenticate-users-list');
 // $response = Http::get('http://127.0.0.1:8000/api/authenticate-users-list');
 // return $response->json();
 // return url('/');
-

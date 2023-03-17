@@ -4,7 +4,6 @@ namespace App\Jobs;
 
 use App\Mail\VaccineReminderEmail;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -16,8 +15,11 @@ class SendReminderEmailJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public $email;
+
     public $name;
+
     public $scheduleDate;
+
     public $centerName;
 
     public function __construct($email, $name, $scheduleDate, $centerName)
@@ -26,7 +28,6 @@ class SendReminderEmailJob implements ShouldQueue
         $this->name = $name;
         $this->scheduleDate = $scheduleDate;
         $this->centerName = $centerName;
-
     }
 
     /**

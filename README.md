@@ -124,6 +124,22 @@ Though I try to make a better performance to build this system but If I had more
 - Optimize Images: Optimize images to reduce their file size and load times. This can help improve the overall performance of the application, especially if I have a lot of images on the site.
 
 
+### About ‘SMS’ notification
+To add SMS notifications for vaccine schedule date in Laravel, need to make several changes to our code. Here are the some steps -
+
+- I have to install a SMS notifications: Laravel provides several packages for sending SMS notifications.
+
+- Need to create a new notification class that extends the Laravel notification class. This class should implement the via method, which returns the channels through which the notification should be sent. In this case, the via method should return ['sms'].
+
+- Need to define the SMS channel in our config/services.php file. This channel should specify the credentials and configuration needed to send SMS notifications.
+
+- Once I created the new notification class for SMS, I need to modify our existing notification class for email to include the SMS notification. In the via method of the email notification class, I should include the sms channel along with the mail channel
+
+- I can customize the message that is sent in the SMS notification by modifying the to Sms method of your notification class for SMS.
+
+- Finally, I need to update my code to send both email and SMS notifications when a vaccine schedule date is set. I can do this by chaining the notify method on my user model with instances of both the email and SMS notification classes.
+
+
 
 
 #### `Note: In home page when you will run this project, you will see 4 type of option to click and goto the features.`

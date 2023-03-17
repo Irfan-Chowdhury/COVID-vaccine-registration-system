@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use App\Services\UserService;
 
 class UserController extends Controller
@@ -15,7 +14,6 @@ class UserController extends Controller
         $this->userService = $userService;
     }
 
-
     public function index()
     {
         $authenticateUsers = $this->userService->getAllAuthenticUsers();
@@ -26,6 +24,7 @@ class UserController extends Controller
     public function verifiedUsers()
     {
         $authenticateUsers = $this->userService->getAllAuthenticUsers();
+
         return response()->json($authenticateUsers);
     }
 }

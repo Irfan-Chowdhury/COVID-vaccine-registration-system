@@ -3,11 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Jobs\SendReminderEmailJob;
-use App\Mail\VaccineReminderEmail;
 use App\Models\Registration;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Mail;
 
 class SendReminderEmails extends Command
 {

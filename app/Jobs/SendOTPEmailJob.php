@@ -4,7 +4,6 @@ namespace App\Jobs;
 
 use App\Mail\OTPMail;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -16,7 +15,9 @@ class SendOTPEmailJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $email;
+
     protected $otp;
+
     public function __construct($email, $otp)
     {
         $this->email = $email;

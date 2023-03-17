@@ -40,6 +40,5 @@ Route::group(['prefix' => 'users'], function () {
     Route::post('/search', [UserController::class, 'searchProcess'])->name('users.searchProcess');
 });
 
-
 // Correction API  USERS
 // The Logic of Day condition

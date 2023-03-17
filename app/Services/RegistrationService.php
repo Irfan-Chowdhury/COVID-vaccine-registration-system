@@ -7,12 +7,9 @@ use App\Contracts\UserContract;
 use App\Contracts\VaccineCenterContract;
 use App\Jobs\SendOTPEmailJob;
 use App\Jobs\SendRegSuccessfulEmailJob;
-use App\Mail\OTPMail;
-use App\Mail\RegistrationSuccessfulMail;
 use App\Traits\DayCheckTrait;
 use App\Traits\MessageTrait;
 use DateTime;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class RegistrationService
@@ -133,10 +130,9 @@ class RegistrationService
         $totalRegCountDateAndCenterWise = $this->registrationContract->count($request->vaccine_center_id, $expectedDate);
 
         if ($totalRegCountDateAndCenterWise < $vaccineCenterDailyCapacity) {
-            $confirmDate = $this->getExpectedDate($currentDate);
+            return $this->getExpectedDate($currentDate);
         }
-        $confirmDate = $this->getExpectedDate($currentDate->modify('+1 days'));
 
-        return $confirmDate;
+        return $expectedDate;
     }
 }
