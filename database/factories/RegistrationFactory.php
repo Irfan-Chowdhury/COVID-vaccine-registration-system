@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\User;
 use App\Models\VaccineCenter;
 use App\Trait\DayCheckTrait;
+use DateTime;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,8 +18,8 @@ class RegistrationFactory extends Factory
     public function definition(): array
     {
         $status = fake()->randomElement(['Scheduled', 'Vaccinated', 'Not registered']);
-
         $user = User::inRandomOrder()->first();
+        $currentDate = new DateTime();
 
         return [
             'vaccine_center_id' => VaccineCenter::inRandomOrder()->first()->id,
@@ -28,7 +29,7 @@ class RegistrationFactory extends Factory
             'date_of_birth' => $user->date_of_birth,
             'email' => fake()->unique()->safeEmail(),
             'mobile' => fake()->numerify('###########'),
-            'schedule_date' => $this->getExpectedDate(),
+            'schedule_date' => $this->getExpectedDate($currentDate),
             'status' => $status,
         ];
     }

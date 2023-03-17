@@ -1,0 +1,28 @@
+
+1. Specific Test Run:
+php artisan test --filter RegistrationTest
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // protected function expectedDateBaseOnDayName($currentDate)
+    // {
+    //     $dayName = date('l', strtotime($currentDate->modify('+7 days')->format('Y-m-d')));
+    //     if ($dayName === 'Friday') {
+    //         return $currentDate->modify('+9 days')->format('Y-m-d');
+    //     } elseif ($dayName === 'Saturday') {
+    //         return $currentDate->modify('+8 days')->format('Y-m-d');
+    //     }
+
+    //     return $currentDate->modify('+7 days')->format('Y-m-d');
+    // }

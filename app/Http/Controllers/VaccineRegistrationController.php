@@ -7,6 +7,7 @@ use App\Mail\RegistrationSuccessfulMail;
 use App\Models\Registration;
 use App\Models\User;
 use App\Models\VaccineCenter;
+use App\Trait\DayCheckTrait;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -15,6 +16,8 @@ use Illuminate\Support\Facades\Validator;
 
 class VaccineRegistrationController extends Controller
 {
+    use DayCheckTrait;
+
     public function userIdentificationPage()
     {
         return view('pages.vaccine_registration.user_identification_page');
@@ -92,24 +95,19 @@ class VaccineRegistrationController extends Controller
 
         if ($request->system_otp !== $request->user_otp) {
             $this->setErrorMessage('OTP does not match. Please input correct OTP.');
-
             return redirect(route('vaccine-registration.confirmationPage'), 307);
         }
 
         // Business Logic
         $currentDate = new DateTime();
-        // $nextDay = '+1 days';
-        // $dateDifference = '+7 days';
         $expectedDate = $currentDate->modify('+7 days')->format('Y-m-d');
-
         $vaccineCenterDailyCapacity = VaccineCenter::find($request->vaccine_center_id)->single_day_limit;
-
         $totalRegCountDateAndCenterWise = Registration::where('vaccine_center_id', $request->vaccine_center_id)
                                         ->where('schedule_date', $expectedDate)
                                         ->count();
 
         if ($totalRegCountDateAndCenterWise < $vaccineCenterDailyCapacity) {
-            $confirmDate = $this->expectedDateBaseOnDayName($currentDate);
+            $confirmDate = $this->getExpectedDate($currentDate);
         }
         // else if($totalRegCountDateAndCenterWise === $vaccineCenterDailyCapacity) {}
 
@@ -129,17 +127,5 @@ class VaccineRegistrationController extends Controller
         ->send(new RegistrationSuccessfulMail($request->name, $confirmDate));
 
         return view('pages.vaccine_registration.success');
-    }
-
-    protected function expectedDateBaseOnDayName($currentDate)
-    {
-        $dayName = date('l', strtotime($currentDate->modify('+7 days')->format('Y-m-d')));
-        if ($dayName === 'Friday') {
-            return $currentDate->modify('+9 days')->format('Y-m-d');
-        } elseif ($dayName === 'Saturday') {
-            return $currentDate->modify('+8 days')->format('Y-m-d');
-        }
-
-        return $currentDate->modify('+7 days')->format('Y-m-d');
     }
 }

@@ -6,9 +6,8 @@ use DateTime;
 
 trait DayCheckTrait
 {
-    public function getExpectedDate()
+    public function getExpectedDate($currentDate)
     {
-        $currentDate = new DateTime();
         $currentDate->modify('+7 days');
         $dayOfWeek = $currentDate->format('w');
 
@@ -17,7 +16,7 @@ trait DayCheckTrait
         } elseif ($dayOfWeek == 6) { // Saturday
             return $currentDate->modify('+1 day')->format('Y-m-d');
         } else {
-            return $currentDate->format('Y-m-d').'<br>';
+            return $currentDate->format('Y-m-d');
         }
     }
 }

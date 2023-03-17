@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/alpha', function () {
+    return view('alpha');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -35,3 +39,9 @@ Route::group(['prefix' => 'users'], function () {
     Route::get('/search', [UserController::class, 'searchPage'])->name('users.searchPage');
     Route::post('/search', [UserController::class, 'searchProcess'])->name('users.searchProcess');
 });
+
+
+
+Route::get('/test', [UserController::class, 'test']);
+Route::post('/test', [UserController::class, 'testStore']);
+
