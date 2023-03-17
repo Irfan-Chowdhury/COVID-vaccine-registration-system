@@ -67,3 +67,7 @@ php artisan serve
 ```bash
 php artisan test
 ```
+
+### What I have done
+- Try to implement Repository Pattern
+- Used datatable to show all list

@@ -9,5 +9,5 @@ class Test extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['center_name','single_day_limit'];
+    protected $fillable = ['center_name', 'single_day_limit'];
 }

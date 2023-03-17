@@ -95,6 +95,7 @@ class VaccineRegistrationController extends Controller
 
         if ($request->system_otp !== $request->user_otp) {
             $this->setErrorMessage('OTP does not match. Please input correct OTP.');
+
             return redirect(route('vaccine-registration.confirmationPage'), 307);
         }
 

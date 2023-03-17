@@ -19,7 +19,7 @@
 
                         <div class="mb-3">
                             <label class="form-label"><b>NID</b></label>
-                            <input type="number" name="nid" required class="form-control" placeholder="Ex:123456789">
+                            <input type="text" name="nid" required class="form-control" placeholder="Ex:123456789">
                         </div>
                         <br>
                         <div class="mb-3">

@@ -3,13 +3,10 @@
 namespace Tests\Feature;
 
 use App\Models\VaccineCenter;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class VaccineCenterTest extends TestCase
 {
-
     public function test_to_check_vaccine_center_url(): void
     {
         $response = $this->get('/vaccine-centers');

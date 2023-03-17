@@ -9,7 +9,7 @@ class VaccineCenterRepository implements VaccineCenterContract
 {
     public function getAll()
     {
-        return VaccineCenter::select('id','center_name','address','single_day_limit')
+        return VaccineCenter::select('id', 'center_name', 'address', 'single_day_limit')
                             ->get();
     }
 }

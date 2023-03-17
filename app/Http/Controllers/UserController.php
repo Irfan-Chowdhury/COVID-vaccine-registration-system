@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Registration;
-use App\Models\Test;
-use App\Models\User;
+use App\Services\UserService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+    private $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
 
     public function index()
     {
-        $authenticateUsers = User::get();
+        $authenticateUsers = $this->userService->getAllAuthenticUsers();
+
         return view('pages.authenticate_users', compact('authenticateUsers'));
     }
 
@@ -24,14 +28,10 @@ class UserController extends Controller
 
     public function searchProcess(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'nid' => 'numeric',
-        ]);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+        if ($this->userService->validation($request) !== 0) {
+            return $this->userService->validation($request);
         }
-
-        $registration = Registration::with('vaccineCenter')->where('nid', $request->nid)->first() ?? 0;
+        $registration = $this->userService->searchProcessing($request);
 
         return view('pages.search', compact('registration'));
     }

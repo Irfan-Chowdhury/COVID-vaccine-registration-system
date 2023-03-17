@@ -3,13 +3,10 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class UserTest extends TestCase
 {
-
     public function test_the_url_returns_authenticate_users_data(): void
     {
         $response = $this->get('/users/authenticate');

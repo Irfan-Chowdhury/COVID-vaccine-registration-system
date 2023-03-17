@@ -2,8 +2,6 @@
 
 namespace App\Traits;
 
-use DateTime;
-
 trait DayCheckTrait
 {
     public function getExpectedDate($currentDate)
