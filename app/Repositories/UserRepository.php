@@ -11,4 +11,19 @@ class UserRepository implements UserContract
     {
         return User::get();
     }
+
+    public function checkExists($nid, $date_of_birth)
+    {
+        return User::where('nid', $nid)
+                    ->where('date_of_birth', $date_of_birth)
+                    ->exists();
+    }
+
+    // R
+    public function getUserInfo($nid, $date_of_birth)
+    {
+        return User::where('nid', $nid)
+            ->where('date_of_birth', $date_of_birth)
+            ->first();
+    }
 }

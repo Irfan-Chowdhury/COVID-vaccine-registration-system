@@ -13,7 +13,7 @@
                 </div>
                 <div class="content">
                     <h1>Registration Successfull !</h1>
-                    <p class="mb-3">Your registration has been confirmed. You'll receive an confirmation email shortly.</p>
+                    <p class="mb-3">Your registration has been confirmed. You'll receive a confirmation email shortly.</p>
                 </div>
             </div>
         </div>

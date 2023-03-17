@@ -12,4 +12,9 @@ class VaccineCenterRepository implements VaccineCenterContract
         return VaccineCenter::select('id', 'center_name', 'address', 'single_day_limit')
                             ->get();
     }
+
+    public function get($id)
+    {
+        return VaccineCenter::find($id);
+    }
 }
