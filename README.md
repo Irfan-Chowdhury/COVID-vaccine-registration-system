@@ -56,3 +56,14 @@ php artisan key:generate
 ```bash
 php artisan serve
 ```
+
+### Packages what I extra used
+- #### [Artisan View](https://github.com/svenluijten/artisan-view)
+- #### [laravel Pint](https://github.com/laravel/pint)
+- #### [Guzzle](https://docs.guzzlephp.org/en/stable/index.html)
+
+
+### Run Test 
+```bash
+php artisan test
+```

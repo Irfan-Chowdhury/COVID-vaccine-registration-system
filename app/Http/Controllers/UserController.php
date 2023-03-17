@@ -11,23 +11,6 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
 
-    public function test()
-    {
-        return 1;
-    }
-
-    public function testStore()
-    {
-        Test::create([
-            'center_name' => 'XYZ',
-            'single_day_limit' => 20,
-        ]);
-        return 'ok';
-    }
-
-
-
-
     public function index()
     {
         $authenticateUsers = User::get();

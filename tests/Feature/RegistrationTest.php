@@ -3,7 +3,7 @@
 namespace Tests\Feature;
 
 use App\Providers\RouteServiceProvider;
-use App\Trait\DayCheckTrait;
+use App\Traits\DayCheckTrait;
 use DateTime;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;

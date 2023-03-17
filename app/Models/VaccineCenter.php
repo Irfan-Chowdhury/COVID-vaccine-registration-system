@@ -11,6 +11,7 @@ class VaccineCenter extends Model
 
     protected $fillable = [
         'center_name',
+        'address',
         'single_day_limit',
     ];
 }

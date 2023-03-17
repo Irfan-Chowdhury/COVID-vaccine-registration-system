@@ -7,7 +7,7 @@ use App\Mail\RegistrationSuccessfulMail;
 use App\Models\Registration;
 use App\Models\User;
 use App\Models\VaccineCenter;
-use App\Trait\DayCheckTrait;
+use App\Traits\DayCheckTrait;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;

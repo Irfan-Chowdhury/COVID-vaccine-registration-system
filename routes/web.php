@@ -41,7 +41,3 @@ Route::group(['prefix' => 'users'], function () {
 });
 
 
-
-Route::get('/test', [UserController::class, 'test']);
-Route::post('/test', [UserController::class, 'testStore']);
-

@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\User;
 use App\Models\VaccineCenter;
-use App\Trait\DayCheckTrait;
+use App\Traits\DayCheckTrait;
 use DateTime;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
