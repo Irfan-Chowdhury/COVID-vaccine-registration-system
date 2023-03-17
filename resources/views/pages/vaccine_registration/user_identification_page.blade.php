@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="exampleFormControlInput1" class="form-label">NID</label>
-                            <input type="number" class="form-control" value="5115291827342095" placeholder="5115291827342095" name='nid'>
+                            <input type="number" class="form-control" placeholder="5115291827342095" name='nid'>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Date of Birth</label>

@@ -91,6 +91,9 @@ class RegistrationService
     {
         $otp = rand(100000, 999999);
 
+        // dispatch(Mail::to($request->email)
+        // ->send(new OTPMail($otp)));
+        
         Mail::to($request->email)
         ->send(new OTPMail($otp));
 
