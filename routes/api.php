@@ -20,4 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/authenticate-users', [UserController::class, 'index']);
-Route::get('/verified-users', [UserController::class, 'verifiedUsers']);
+Route::get('/authenticate-users-list', [UserController::class, 'verifiedUsers']);

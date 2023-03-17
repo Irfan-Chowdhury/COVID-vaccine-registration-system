@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\RegistrationService;
 use App\Traits\DayCheckTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class VaccineRegistrationController extends Controller
 {
@@ -59,3 +60,11 @@ class VaccineRegistrationController extends Controller
         return view('pages.vaccine_registration.success');
     }
 }
+
+
+// Fetch Verified Users Data
+// $response = Http::get(url('/').'/api/authenticate-users-list');
+// $response = Http::get('http://127.0.0.1:8000/api/authenticate-users-list');
+// return $response->json();
+// return url('/');
+

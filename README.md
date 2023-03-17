@@ -20,7 +20,7 @@ php artisan ui vue --auth
 ## How to run this project
 
 ### Configuration
-- PHP-8.2
+- PHP-8.1
 - Laravel-10
 
 ### ENV Setup 
@@ -96,6 +96,7 @@ php artisan reminder:send
 - Used datatable to show all list
 - Testing
 - Corn Job setup for sending email to the registered user at 09:00 PM before 1 day ago of their vaccine schedule date.
+- Mail sent asynchronously
 
 ### About the project & my limitation
 I followed the [Surokkha](https://surokkha.gov.bd/) which is Bangladeshi website to register for COVID Vaccine and I try to develope this system like this.

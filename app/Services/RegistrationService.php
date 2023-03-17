@@ -5,6 +5,8 @@ namespace App\Services;
 use App\Contracts\RegistrationContract;
 use App\Contracts\UserContract;
 use App\Contracts\VaccineCenterContract;
+use App\Jobs\SendOTPEmailJob;
+use App\Jobs\SendRegSuccessfulEmailJob;
 use App\Mail\OTPMail;
 use App\Mail\RegistrationSuccessfulMail;
 use App\Traits\DayCheckTrait;
@@ -91,11 +93,7 @@ class RegistrationService
     {
         $otp = rand(100000, 999999);
 
-        // dispatch(Mail::to($request->email)
-        // ->send(new OTPMail($otp)));
-        
-        Mail::to($request->email)
-        ->send(new OTPMail($otp));
+        dispatch(new SendOTPEmailJob($request->email, $otp));
 
         return $otp;
     }
@@ -124,8 +122,7 @@ class RegistrationService
         $confirmDate = $this->getConfirmDate($request);
         $this->registrationContract->store($request, $confirmDate);
 
-        Mail::to($request->email)
-        ->send(new RegistrationSuccessfulMail($request->name, $confirmDate));
+        dispatch(new SendRegSuccessfulEmailJob($request->email, $request->name, $confirmDate));
     }
 
     protected function getConfirmDate($request)
@@ -138,6 +135,7 @@ class RegistrationService
         if ($totalRegCountDateAndCenterWise < $vaccineCenterDailyCapacity) {
             $confirmDate = $this->getExpectedDate($currentDate);
         }
+        $confirmDate = $this->getExpectedDate($currentDate->modify('+1 days'));
 
         return $confirmDate;
     }

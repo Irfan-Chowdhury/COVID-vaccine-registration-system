@@ -42,6 +42,4 @@ Route::group(['prefix' => 'users'], function () {
 
 
 // Correction API  USERS
-// MAIL BY QUEUE
 // The Logic of Day condition
-// laravel Sail

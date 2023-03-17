@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Jobs\SendReminderEmailJob;
 use App\Mail\VaccineReminderEmail;
 use App\Models\Registration;
 use Carbon\Carbon;
@@ -35,8 +36,7 @@ class SendReminderEmails extends Command
             $scheduleDate = $schedule->schedule_date;
             $centerName = $schedule->vaccineCenter->center_name;
 
-            Mail::to($schedule->email)
-            ->send(new VaccineReminderEmail($name, $scheduleDate, $centerName));
+            dispatch(new SendReminderEmailJob($schedule->email, $name, $scheduleDate, $centerName));
         }
         $this->info('Successfully sent.');
     }
