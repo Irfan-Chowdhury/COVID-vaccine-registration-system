@@ -11,28 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // if (! Schema::hasTable('registrations')) {
-        //     Schema::create('registrations', function (Blueprint $table) {
-        //         $table->id();
-        //         $table->unsignedBigInteger('vaccine_center_id');
-        //         $table->string('nid')->unique();
-        //         $table->string('name');
-        //         $table->string('gender');
-        //         $table->string('date_of_birth');
-        //         $table->string('email');
-        //         $table->string('mobile');
-        //         $table->date('schedule_date');
-        //         $table->string('status');
-        //         $table->timestamps();
-
-        //         $table->foreign('vaccine_center_id')->references('id')->on('vaccine_centers')->onDelete('cascade');
-        //     });
-        // }
-
-        // Schema::table('registrations', function (Blueprint $table) {
-        //     $table->dropForeign('registrations_vaccine_center_id_foreign');
-        // });
-
         Schema::create('registrations', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('vaccine_center_id');
@@ -61,3 +39,37 @@ return new class extends Migration
         });
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // if (! Schema::hasTable('registrations')) {
+        //     Schema::create('registrations', function (Blueprint $table) {
+        //         $table->id();
+        //         $table->unsignedBigInteger('vaccine_center_id');
+        //         $table->string('nid')->unique();
+        //         $table->string('name');
+        //         $table->string('gender');
+        //         $table->string('date_of_birth');
+        //         $table->string('email');
+        //         $table->string('mobile');
+        //         $table->date('schedule_date');
+        //         $table->string('status');
+        //         $table->timestamps();
+
+        //         $table->foreign('vaccine_center_id')->references('id')->on('vaccine_centers')->onDelete('cascade');
+        //     });
+        // }
+
+        // Schema::table('registrations', function (Blueprint $table) {
+        //     $table->dropForeign('registrations_vaccine_center_id_foreign');
+        // });

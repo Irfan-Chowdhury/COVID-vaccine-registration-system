@@ -24,7 +24,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/vaccine-centers', [VaccineCenterController::class, 'index']);
+Route::get('/vaccine-center-list', [VaccineCenterController::class, 'index'])->name('vaccine-center-list');
 
 Route::group(['prefix' => 'vaccine-registration'], function () {
     Route::get('/', [VaccineRegistrationController::class, 'userIdentificationPage'])->name('vaccine-registration.userIdentificationPage');
